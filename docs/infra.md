@@ -1,6 +1,6 @@
 # Infrastructure
 
-The goal here is to have a cLLM server running a small LLM with prefix caching enabled set up, along with a reusable function that measures Time-To-First-Token (TTFT) reliably.
+The goal here is to have a vLLM server running a small LLM with prefix caching enabled set up, along with a reusable function that measures Time-To-First-Token (TTFT) reliably.
 
 Repeated prompts (cache hits) and new prompts (cache misses) should produce clearly separable TTFT distributions repeatably.
 
