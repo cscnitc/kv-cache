@@ -1,0 +1,23 @@
+# Official vLLM image, prefix caching on. Model/port must match config.py.
+services:
+  vllm:
+    image: vllm/vllm-openai:latest
+    ports:
+      - "8000:8000"
+    ipc: host
+    volumes:
+      - ${HOME}/.cache/huggingface:/root/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    command:
+      - Qwen/Qwen2.5-1.5B-Instruct
+      - --served-model-name
+      - qwen2.5-1.5b
+      - --max-model-len
+      - "4096"
+      - --enable-prefix-caching
